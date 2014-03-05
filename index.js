@@ -4,10 +4,15 @@ var _ = require('lodash');
 var Q = require('q');
 
 
-function UrlToImage() {
+var UrlToImage = (function() {
     var api = {};
 
     api.render = function(url, file, opts) {
+        opts = _.extend({
+            width: 1280,
+            height: 800
+        }, opts);
+
         var def = Q.defer();
 
         var args = [
@@ -26,10 +31,10 @@ function UrlToImage() {
             def.resolve(err);
         });
 
-        return def;
+        return def.promise;
     };
 
     return api;
-}
+})();
 
 module.exports = UrlToImage;
