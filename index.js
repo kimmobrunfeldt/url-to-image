@@ -1,3 +1,4 @@
+var path = require('path');
 var exec = require('child_process').exec;
 var _ = require('lodash');
 var Q = require('q');
@@ -10,7 +11,7 @@ function UrlToImage() {
         var def = Q.defer();
 
         var args = [
-            __dirname + 'url-to-image.js',
+            path.join(__dirname, 'url-to-image.js'),
             url,
             file,
             opts.width,
