@@ -1,7 +1,7 @@
 {
   "name": "url-to-image",
   "version": "0.1.0",
-  "description": "PhantomJS web page screenshot made right",
+  "description": "PhantomJS screenshotting done right",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
