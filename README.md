@@ -20,6 +20,8 @@ screenshot('http://google.com', 'google.png').done(function() {
 
     npm install url-to-image
 
+Also you need to have [PhantomJS](http://phantomjs.org/) installed globally. `phantomjs` executable also needs to be in your PATH.
+
 ## Test
 
     npm test
