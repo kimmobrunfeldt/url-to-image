@@ -27,8 +27,13 @@ var UrlToImage = (function() {
             maxBuffer: Infinity
         };
 
-        exec('phantomjs ' + args.join(' '), execOpts, function(err, stdout) {
-            def.resolve(err);
+        exec('phantomjs ' + args.join(' '), execOpts, function(err, stdout, stderr) {
+            if (err === null) {
+                def.resolve();
+            } else {
+                def.reject(new Error(stderr));
+            }
+
         });
 
         return def.promise;
@@ -37,4 +42,4 @@ var UrlToImage = (function() {
     return api;
 })();
 
-module.exports = UrlToImage;
+module.exports = UrlToImage.render;

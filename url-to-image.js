@@ -55,7 +55,7 @@ var Page = (function(opts) {
         page.open(url, function(status) {
             if (status !== "success") {
                 console.error('Unable to load url:', url);
-                phantom.exit();
+                phantom.exit(1);
             } else {
                 forceRenderTimeout = setTimeout(renderAndExit, opts.maxTimeout);
             }

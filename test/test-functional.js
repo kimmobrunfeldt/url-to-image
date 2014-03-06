@@ -1,10 +1,12 @@
-var assert = require("assert");
 var http = require('http');
 var fs = require("fs");
-var sizeOf = require('image-size');
-var UrlToImage = require('../');
 
-describe('UrlToImage', function() {
+var assert = require("assert");
+var sizeOf = require('image-size');
+
+var screenshot = require('../');
+
+describe('screenshot', function() {
 
     var server = http.createServer(function(req, res) {
         res.end('<html>test</html>');
@@ -20,9 +22,9 @@ describe('UrlToImage', function() {
         done();
     });
 
-    describe('#render()', function() {
+    describe('render', function() {
         it('should render test image', function(done) {
-            UrlToImage.render('http://localhost:9000', 'localhost.png').done(function() {
+            screenshot('http://localhost:9000', 'localhost.png').done(function() {
                 var dimensions = sizeOf('localhost.png');
                 assert.equal(dimensions.width, 1280, 'default width is incorrect');
                 fs.unlinkSync('localhost.png');
@@ -31,7 +33,7 @@ describe('UrlToImage', function() {
         });
 
         it('should render image in custom size', function(done) {
-            UrlToImage.render(
+            screenshot(
                 'http://localhost:9000',
                 'localhost.png', {
                     width: 800,
@@ -48,6 +50,18 @@ describe('UrlToImage', function() {
                 assert.equal(dimensions.height, 600, 'height is incorrect');
 
                 fs.unlinkSync('localhost.png');
+                done();
+            });
+        });
+
+        it('should fail', function(done) {
+            screenshot(
+                'http://failure',
+                'localhost.png', {
+                    width: 800,
+                    height: 600
+                }
+            ).fail(function(err) {
                 done();
             });
         });
