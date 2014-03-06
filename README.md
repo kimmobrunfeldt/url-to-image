@@ -9,10 +9,10 @@ Instead of waiting fixed amount of time before rendering, we give a short time f
 
 ```javascript
 var screenshot = require('url-to-image');
-screenshot('http://google.com', 'google.png').done(function() {
-    // now google.png exists and contains screenshot of google.com
-}).fail(function(err) {
+screenshot('http://google.com', 'google.png').fail(function(err) {
     console.error(err);
+}).done(function() {
+    // now google.png exists and contains screenshot of google.com
 });
 ```
 
@@ -25,3 +25,11 @@ Also you need to have [PhantomJS](http://phantomjs.org/) installed globally. `ph
 ## Test
 
     npm test
+
+
+## Attribution
+
+This module was inspired by
+
+* [url-to-screenshot](https://github.com/juliangruber/url-to-screenshot)
+* https://gist.github.com/cjoudrey/1341747
