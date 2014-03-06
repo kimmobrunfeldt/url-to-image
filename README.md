@@ -7,12 +7,14 @@ Instead of waiting fixed amount of time before rendering, we give a short time f
 
 ## Usage
 
-    var screenshot = require('url-to-image');
-    screenshot('http://google.com', 'google.png').done(function() {
-        // now google.png exists and contains screenshot of google.com
-    }).fail(function(err) {
-        console.error(err);
-    });
+```javascript
+var screenshot = require('url-to-image');
+screenshot('http://google.com', 'google.png').done(function() {
+    // now google.png exists and contains screenshot of google.com
+}).fail(function(err) {
+    console.error(err);
+});
+```
 
 ## Install
 
