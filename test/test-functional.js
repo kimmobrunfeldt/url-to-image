@@ -23,7 +23,7 @@ describe('screenshot', function() {
     });
 
     describe('render', function() {
-        this.timeout(5000);
+        this.timeout(20000);
 
         it('should render test image', function(done) {
             screenshot('http://localhost:9000', 'localhost.png').done(function() {

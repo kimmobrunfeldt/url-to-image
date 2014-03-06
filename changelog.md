@@ -1,10 +1,16 @@
 
-0.1.2 / 2014-03-07 
+0.1.3 / 2014-03-07
+==================
+
+ * Increase timeout for tests
+ * Bump version
+
+0.1.2 / 2014-03-07
 ==================
 
  * Increase timeout for tests to prevent travis fails
 
-0.1.1 / 2014-03-07 
+0.1.1 / 2014-03-07
 ==================
 
  * Update NPM package description
