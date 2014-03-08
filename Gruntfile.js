@@ -19,6 +19,15 @@ module.exports = function(grunt) {
         },
         command: 'mocha'
       }
+    },
+    release: {
+      options: {
+        // Don't release to NPM since travis does this
+        npm: false,
+        npmtag: false,
+        // default: 'release <%= version %>'
+        commitMessage: 'Release <%= version %>'
+      }
     }
   });
 
@@ -27,6 +36,4 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-release');
 
   grunt.registerTask('test', ['jshint', 'shell:mocha']);
-  grunt.registerTask('publish', ['test', 'release']);
-
 };

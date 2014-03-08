@@ -1,9 +1,15 @@
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
+- '0.11'
+- '0.10'
 before_script:
-  - npm install -g mocha
+- npm install -g mocha
 notifications:
   email:
-    - kimmo.brunfeldt+urltoimage@futurice.com
+  - kimmo.brunfeldt+urltoimage@futurice.com
+deploy:
+  provider: npm
+  api_key:
+    secure: BaR508fKqIBXHYXbAwpFyBJwAzYEQ+LwoMWbuBcc9YeEoiPbsFYG2kky1lUMBzHDHMHlqMelaFdStmSXDcu4nVV4QXQdE/jxUuJiaAgiIPoA+ULlfd2JfHM0QJVgda6Px5rtInD6ZZLjv32GDg0I4T6W87RVVriEeG/ZsWHrylI=
+  on:
+    tags: true

@@ -24,17 +24,21 @@ You need to have [PhantomJS](http://phantomjs.org/) installed globally. `phantom
 
 ## Test
 
-    npm test
+    grunt test
 
 You need to have *mocha* installed globally with `npm install -g mocha`.
 
-## Releasing
+## Release
 
-* Edit [changelog][changelog.md]
-* `grunt publish`
+* Commit all changes
+* Run `grunt release`, which will create new tag and publish code to GitHub
 
-    It will run tests and publish code to GitHub and npm
+    Travis will release newest tag to NPM
 
+* Edit GitHub [release notes](releases)
+
+
+To see an example how to release minor/major, check https://github.com/geddski/grunt-release
 
 ## Attribution
 
