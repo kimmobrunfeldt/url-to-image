@@ -56,7 +56,7 @@ describe('screenshot', function() {
             });
         });
 
-        it('should fail', function(done) {
+        it('should fail to incorrect url', function(done) {
             screenshot(
                 'http://failure',
                 'localhost.png', {
