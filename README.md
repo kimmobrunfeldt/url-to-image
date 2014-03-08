@@ -20,11 +20,20 @@ screenshot('http://google.com', 'google.png').fail(function(err) {
 
     npm install url-to-image
 
-Also you need to have [PhantomJS](http://phantomjs.org/) installed globally. `phantomjs` executable also needs to be in your PATH.
+You need to have [PhantomJS](http://phantomjs.org/) installed globally. `phantomjs` executable also needs to be in your PATH.
 
 ## Test
 
     npm test
+
+You need to have *mocha* installed globally with `npm install -g mocha`.
+
+## Releasing
+
+* Edit [changelog][changelog.md]
+* `grunt publish`
+
+    It will run tests and publish code to GitHub and npm
 
 
 ## Attribution
