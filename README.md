@@ -35,7 +35,7 @@ You need to have *mocha* installed globally with `npm install -g mocha`.
 
     Travis will release newest tag to NPM
 
-* Edit GitHub [release notes](releases)
+* Edit GitHub release notes
 
 
 To see an example how to release minor/major, check https://github.com/geddski/grunt-release
