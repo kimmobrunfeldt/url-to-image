@@ -34,12 +34,15 @@ var screenshot = require('url-to-image');
 
 This will run a PhantomJS script([url-to-image.js])(url-to-image.js) which renders given url to an image.
 
+**Parameters**
+
 * `url` Url of the page which will be rendered as image. For example `http://google.com`.
 * `filePath` File path where to save rendered image.
 * `options` Options for page rendering.
 
     **Default values for options**
 
+    ```javascript
     {
         // User agent width
         width: 1200,
@@ -47,8 +50,11 @@ This will run a PhantomJS script([url-to-image.js])(url-to-image.js) which rende
         // User agent height
         height: 800
     }
+    ```
 
-Function returns [Q promise object](https://github.com/kriskowal/q/wiki/API-Reference#promise-methods). In case of error, stderr is passed as a string to fail handler.
+**Returns**
+
+[Q promise object](https://github.com/kriskowal/q/wiki/API-Reference#promise-methods). In case of error, stderr is passed as a string to fail handler.
 
 **Detailed example**
 
