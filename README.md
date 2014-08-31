@@ -99,3 +99,7 @@ This module was inspired by
 
 * [url-to-screenshot](https://github.com/juliangruber/url-to-screenshot)
 * https://gist.github.com/cjoudrey/1341747
+
+# License
+
+MIT
