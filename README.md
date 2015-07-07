@@ -48,7 +48,13 @@ This will run a PhantomJS script([url-to-image.js](url-to-image.js)) which rende
         width: 1200,
 
         // User agent height
-        height: 800
+        height: 800,
+
+        // If true, SSL errors are ignored. Default true.
+        ignoreSslErrors: true,
+
+        // Set SSL protocol. Default: any. One of: sslv3, sslv2, tlsv1, any
+        sslProtocol: 'any'
     }
     ```
 
