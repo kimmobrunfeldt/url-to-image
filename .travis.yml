@@ -1,12 +1,13 @@
 language: node_js
 node_js:
+- '0.12'
 - '0.11'
 - '0.10'
 before_script:
 - npm install -g mocha grunt-cli
 notifications:
   email:
-  - kimmo.brunfeldt+urltoimage@futurice.com
+  - kimmo.brunfeldt+urltoimage@gmail.com
 deploy:
   provider: npm
   email: kimmo.brunfeldt@gmail.com
@@ -14,4 +15,4 @@ deploy:
     secure: BaR508fKqIBXHYXbAwpFyBJwAzYEQ+LwoMWbuBcc9YeEoiPbsFYG2kky1lUMBzHDHMHlqMelaFdStmSXDcu4nVV4QXQdE/jxUuJiaAgiIPoA+ULlfd2JfHM0QJVgda6Px5rtInD6ZZLjv32GDg0I4T6W87RVVriEeG/ZsWHrylI=
   on:
     tags: true
-    node: '0.11'
+    node: '0.12'
