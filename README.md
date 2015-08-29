@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/kimmobrunfeldt/url-to-image.png?theme=shields.io)](https://david-dm.org/kimmobrunfeldt/url-to-image)
 [![devDependency Status](https://david-dm.org/kimmobrunfeldt/url-to-image/dev-status.png?theme=shields.io)](https://david-dm.org/kimmobrunfeldt/url-to-image#info=devDependencies)
 
-Takes screeshot of a given page. This module correctly handles pages which dynamically load content making AJAX requests.
+Takes screenshot of a given page. This module correctly handles pages which dynamically load content making AJAX requests.
 Instead of waiting fixed amount of time before rendering, we give a short time for the page to make additional requests.
 
 **Example usage**
@@ -89,12 +89,12 @@ You need to have *mocha* installed globally with `npm install -g mocha`.
 
 ## Release
 
-* Commit all changes
-* Run `grunt release`, which will create new tag and publish code to GitHub
+* Commit all changes.
+* Run `grunt release`, which will create new tag and publish code to GitHub.
 
     Travis will release newest tag to NPM
 
-* Edit GitHub release notes
+* Edit GitHub release notes.
 
 
 To see an example how to release minor/major, check https://github.com/geddski/grunt-release
