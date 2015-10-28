@@ -30,7 +30,7 @@ var UrlToImage = (function() {
          * Takes true / false
          */
         if (opts.ignoreSslErrors) {
-          args.unshift('--ignore-ssl-errors');
+          args.unshift('--ignore-ssl-errors=true');
         }
 
         if (opts.sslCertificatesPath) {
