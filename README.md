@@ -21,8 +21,26 @@ urlToImage('http://google.com', 'google.png').then(function() {
 **Usage from command line:**
 
 ```bash
-urltoimage http://google.com google.png
+$ urltoimage http://google.com google.png
 ```
+
+Sometimes it's useful to see requests, responses and page errors from PhantomJS:
+
+```bash
+$ urltoimage http://google.com google.png --verbose
+-> GET http://google.com/
+-> GET http://www.google.fi/?gfe_rd=cr&ei=xTYxVouuOeiA8QexyZ2QBw
+<- 302 http://google.com/
+-> GET http://ssl.gstatic.com/gb/images/b_8d5afc09.png
+
+... quite a lot of requests ...
+
+-> GET http://ssl.gstatic.com/gb/js/sem_32d9c4210965b8e7bfa34fa376864ce8.js
+<- 200 http://ssl.gstatic.com/gb/js/sem_32d9c4210965b8e7bfa34fa376864ce8.js
+Render screenshot..
+Done.
+```
+
 
 For more options, see [CLI](#command-line-interface-cli) chapter.
 
