@@ -24,7 +24,7 @@ urlToImage('http://google.com', 'google.png').then(function() {
 urltoimage http://google.com google.png
 ```
 
-For more options, see [CLI](##command-line-interface-cli) chapter.
+For more options, see [CLI](#command-line-interface-cli) chapter.
 
 ## Install
 
