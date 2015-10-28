@@ -91,9 +91,10 @@ This will run a PhantomJS script([url-to-image.js](./src/url-to-image.js)) which
         // If true, phantomjs script will output requests and responses to stdout
         verbose: false
 
-        // String of of phantomjs arguments, e.g. '--ignore-ssl-errors=true'
+        // String of of phantomjs arguments
+        // You can separate arguments with spaces
         // See options in http://phantomjs.org/api/command-line.html
-        phantomArguments: null
+        phantomArguments: '--ignore-ssl-errors=true'
     }
     ```
 
@@ -134,21 +135,25 @@ Usage: urltoimage <url> <path> [options]
 
 
 Options:
-  --width         Width of the viewport                 [string] [default: 1280]
-  --height        Height of the viewport                 [string] [default: 800]
-  --ajax-timeout  How long in ms do we wait for additional requests after all
-                  initial requests have gotten their response
+  --width              Width of the viewport            [string] [default: 1280]
+  --height             Height of the viewport            [string] [default: 800]
+  --ajax-timeout       How long in ms do we wait for additional requests after
+                       all initial requests have gotten their response
                                                          [string] [default: 300]
-  --max-timeout   How long in ms do we wait at maximum. The screenshot is taken
-                  after this time even though resources are not loaded
-                                                       [string] [default: 10000]
-  --kill-timeout  How long in ms do we wait for phantomjs process to finish. If
-                  the process is running after this time, it is killed.
-                                                      [string] [default: 120000]
-  --verbose       If set, script will output additional information to stdout.
-                                                      [boolean] [default: false]
-  -h, --help      Show help                                            [boolean]
-  -v, --version   Show version number                                  [boolean]
+  --max-timeout        How long in ms do we wait at maximum. The screenshot is
+                       taken after this time even though resources are not
+                       loaded                          [string] [default: 10000]
+  --kill-timeout       How long in ms do we wait for phantomjs process to
+                       finish. If the process is running after this time, it is
+                       killed.                        [string] [default: 120000]
+  --phantom-arguments  Command line arguments to be passed to phantomjs
+                       process.You must use the format
+                       --phantom-arguments="--version".
+                                  [string] [default: "--ignore-ssl-errors=true"]
+  --verbose            If set, script will output additional information to
+                       stdout.                        [boolean] [default: false]
+  -h, --help           Show help                                       [boolean]
+  -v, --version        Show version number                             [boolean]
 
 Examples:
   urltoimage http://google.com google.png

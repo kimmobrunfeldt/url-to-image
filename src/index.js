@@ -8,13 +8,15 @@ var phantomjs = require('phantomjs')
 var cliParser = require('./cli-parser');
 
 function render(url, filePath, opts) {
-    opts = _.extend(cliParser.defaultOpts, {
-        phantomArguments: null
-    }, opts);
+    opts = _.extend(cliParser.defaultOpts, opts);
 
     var args = [];
     if (_.isString(opts.phantomArguments)) {
         args = opts.phantomArguments.split(' ');
+    }
+
+    if (!_.startsWith(url, 'http')) {
+        url = 'http://' + url;
     }
 
     args = args.concat([
@@ -59,7 +61,7 @@ function render(url, filePath, opts) {
             if (exitCode > 0) {
                 var err;
                 if (exitCode === 10) {
-                    err = new Error('Unable to load given url');
+                    err = new Error('Unable to load given url: ' + url);
                 }
                 reject(err);
             } else {

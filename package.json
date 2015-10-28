@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "bluebird": "3.0.x",
-    "lodash": "2.4.x",
+    "lodash": "^3.10.1",
     "phantomjs": "1.9.x",
     "yargs": "3.29.x"
   },

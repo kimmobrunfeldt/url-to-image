@@ -9,7 +9,8 @@ var defaultOpts = {
     ajaxTimeout: 300,
     maxTimeout: 1000 * 10,
     killTimeout: 1000 * 60 * 2,
-    verbose: false
+    verbose: false,
+    phantomArguments: '--ignore-ssl-errors=true'
 };
 
 function getOpts(argv) {
@@ -53,6 +54,12 @@ function getUserOpts() {
         describe: 'How long in ms do we wait for phantomjs process to finish.' +
                   ' If the process is running after this time, it is killed.',
         default: defaultOpts.killTimeout,
+        type: 'string'
+    })
+    .option('phantom-arguments', {
+        describe: 'Command line arguments to be passed to phantomjs process.' +
+                  'You must use the format --phantom-arguments="--version".',
+        default: defaultOpts.phantomArguments,
         type: 'string'
     })
     .option('verbose', {
