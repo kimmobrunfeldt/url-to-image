@@ -161,25 +161,20 @@ Examples:
   urltoimage http://google.com google.png
 ```
 
-## Test
-
-    grunt test
-
-You need to have *mocha* installed globally with `npm install -g mocha`.
-
 # Contributors
 
 ## Release
 
 * Commit all changes.
-* Run `grunt release`, which will create new tag and publish code to GitHub.
+* Use [releasor](https://github.com/kimmobrunfeldt/releasor) to automate the release:
 
-    Travis will release newest tag to NPM
+    `releasor --bump patch`
 
 * Edit GitHub release notes.
 
+## Test
 
-To see an example how to release minor/major, check https://github.com/geddski/grunt-release
+    npm test
 
 ## Attribution
 

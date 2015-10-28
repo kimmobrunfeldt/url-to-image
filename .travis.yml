@@ -8,11 +8,3 @@ node_js:
 notifications:
   email:
   - kimmo.brunfeldt+urltoimage@gmail.com
-deploy:
-  provider: npm
-  email: kimmo.brunfeldt@gmail.com
-  api_key:
-    secure: BaR508fKqIBXHYXbAwpFyBJwAzYEQ+LwoMWbuBcc9YeEoiPbsFYG2kky1lUMBzHDHMHlqMelaFdStmSXDcu4nVV4QXQdE/jxUuJiaAgiIPoA+ULlfd2JfHM0QJVgda6Px5rtInD6ZZLjv32GDg0I4T6W87RVVriEeG/ZsWHrylI=
-  on:
-    tags: true
-    node: 0.12
