@@ -40,7 +40,7 @@ var urlToImage = require('url-to-image');
 
 #### urlToImage(url, filePath, options)
 
-This will run a PhantomJS script([url-to-image.js](url-to-image.js)) which renders given url to an image.
+This will run a PhantomJS script([url-to-image.js](./src/url-to-image.js)) which renders given url to an image.
 
 **Parameters**
 
