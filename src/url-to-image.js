@@ -18,7 +18,7 @@ function main() {
         filePath: args[2],
         width: args[3],
         height: args[4],
-        ajaxTimeout: args[5],
+        requestTimeout: args[5],
         maxTimeout: args[6],
         verbose: args[7] === 'true'
     };
@@ -29,7 +29,7 @@ function main() {
 function renderPage(opts) {
     var requestCount = 0;
     var forceRenderTimeout;
-    var ajaxRenderTimeout;
+    var dynamicRenderTimeout;
 
     var page = webPage.create();
     page.viewportSize = {
@@ -45,7 +45,7 @@ function renderPage(opts) {
     page.onResourceRequested = function(request) {
         log('->', request.method, request.url);
         requestCount += 1;
-        clearTimeout(ajaxRenderTimeout);
+        clearTimeout(dynamicRenderTimeout);
     };
 
     page.onResourceReceived = function(response) {
@@ -53,7 +53,7 @@ function renderPage(opts) {
             log('<-', response.status, response.url);
             requestCount -= 1;
             if (requestCount === 0) {
-                ajaxRenderTimeout = setTimeout(renderAndExit, opts.ajaxTimeout);
+                dynamicRenderTimeout = setTimeout(renderAndExit, opts.requestTimeout);
             }
         }
     };

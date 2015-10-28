@@ -78,7 +78,9 @@ This will run a PhantomJS script([url-to-image.js](./src/url-to-image.js)) which
 
         // How long in ms do we wait for additional requests
         // after all initial requests have gotten their response
-        ajaxTimeout: 300,
+        // Note: this does NOT limit the amount of time individual request
+        //       can take in time
+        requestTimeout: 300,
 
         // How long in ms do we wait at maximum. The screenshot is
         // taken after this time even though resources are not loaded
@@ -111,7 +113,7 @@ var options = {
     width: 600,
     height: 800,
     // Give a short time to load additional resources
-    ajaxTimeout: 100
+    requestTimeout: 100
 }
 
 urlToImage('http://google.com', 'google.png', options)
@@ -137,7 +139,7 @@ Usage: urltoimage <url> <path> [options]
 Options:
   --width              Width of the viewport            [string] [default: 1280]
   --height             Height of the viewport            [string] [default: 800]
-  --ajax-timeout       How long in ms do we wait for additional requests after
+  --request-timeout    How long in ms do we wait for additional requests after
                        all initial requests have gotten their response
                                                          [string] [default: 300]
   --max-timeout        How long in ms do we wait at maximum. The screenshot is

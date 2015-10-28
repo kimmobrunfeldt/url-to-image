@@ -6,7 +6,7 @@ var VERSION = require('../package.json').version;
 var defaultOpts = {
     width: 1280,
     height: 800,
-    ajaxTimeout: 300,
+    requestTimeout: 300,
     maxTimeout: 1000 * 10,
     killTimeout: 1000 * 60 * 2,
     verbose: false,
@@ -38,10 +38,10 @@ function getUserOpts() {
         default: defaultOpts.height,
         type: 'string'
     })
-    .option('ajax-timeout', {
+    .option('request-timeout', {
         describe: 'How long in ms do we wait for additional requests' +
                   ' after all initial requests have gotten their response',
-        default: defaultOpts.ajaxTimeout,
+        default: defaultOpts.requestTimeout,
         type: 'string'
     })
     .option('max-timeout', {
@@ -87,8 +87,8 @@ function validateAndTransformOpts(opts) {
         validateNumber(opts.height, 'Incorrect argument, height is not a number');
     }
 
-    if (opts.ajaxTimeout) {
-        validateNumber(opts.ajaxTimeout, 'Incorrect argument, ajax timeout is not a number');
+    if (opts.requestTimeout) {
+        validateNumber(opts.requestTimeout, 'Incorrect argument, request timeout is not a number');
     }
 
     if (opts.maxTimeout) {

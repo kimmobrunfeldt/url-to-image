@@ -25,7 +25,7 @@ function render(url, filePath, opts) {
         filePath,
         opts.width,
         opts.height,
-        opts.ajaxTimeout,
+        opts.requestTimeout,
         opts.maxTimeout,
         opts.verbose
     ]);
