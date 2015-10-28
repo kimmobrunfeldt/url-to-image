@@ -10,11 +10,11 @@ Instead of waiting fixed amount of time before rendering, we give a short time f
 **Example usage**
 
 ```javascript
-var screenshot = require('url-to-image');
-screenshot('http://google.com', 'google.png').fail(function(err) {
-    console.error(err);
-}).done(function() {
+var urlToImage = require('url-to-image');
+urlToImage('http://google.com', 'google.png').then(function() {
     // now google.png exists and contains screenshot of google.com
+}).catch(function(err) {
+    console.error(err);
 });
 ```
 
@@ -22,15 +22,15 @@ screenshot('http://google.com', 'google.png').fail(function(err) {
 
     npm install url-to-image
 
-You need to have [PhantomJS](http://phantomjs.org/) installed globally. `phantomjs` executable also needs to be in your PATH.
+PhantomJS is installed by using [Medium/phantomjs NPM module](https://github.com/Medium/phantomjs).
 
-## Api
+## API
 
 ```javascript
-var screenshot = require('url-to-image');
+var urlToImage = require('url-to-image');
 ```
 
-#### screenshot(url, filePath, options)
+#### urlToImage(url, filePath, options)
 
 This will run a PhantomJS script([url-to-image.js](url-to-image.js)) which renders given url to an image.
 
@@ -50,42 +50,91 @@ This will run a PhantomJS script([url-to-image.js](url-to-image.js)) which rende
         // User agent height
         height: 800,
 
-        // If true, SSL errors are ignored. Default true.
-        ignoreSslErrors: true,
+        // How long in ms do we wait for additional requests
+        // after all initial requests have gotten their response
+        ajaxTimeout: 300,
 
-        // Set SSL protocol. Default: any. One of: sslv3, sslv2, tlsv1, any
-        sslProtocol: 'any'
+        // How long in ms do we wait at maximum. The screenshot is
+        // taken after this time even though resources are not loaded
+        maxTimeout: 1000 * 10,
+
+        // How long in ms do we wait for phantomjs process to finish.
+        // If the process is running after this time, it is killed.
+        killTimeout: 1000 * 60 * 2,
+
+        // If true, phantomjs script will output requests and responses to stdout
+        verbose: false
+
+        // String of of phantomjs arguments, e.g. '--ignore-ssl-errors=true'
+        // See options in http://phantomjs.org/api/command-line.html
+        phantomArguments: null
     }
     ```
 
 **Returns**
 
-[Q promise object](https://github.com/kriskowal/q/wiki/API-Reference#promise-methods). In case of error, stderr is passed as a string to fail handler.
+[Bluebird promise object](http://bluebirdjs.com/docs/api-reference.html).
 
 **Detailed example**
 
 ```javascript
-var screenshot = require('url-to-image');
+var urlToImage = require('url-to-image');
 
 var options = {
     width: 600,
-    height: 800
+    height: 800,
+    // Give a short time to load additional resources
+    ajaxTimeout: 100
 }
 
-var promise = screenshot('http://google.com', 'google.png', options);
-promise.fail(function(stderr) {
-    console.error(stderr);
-}).done(function() {
+urlToImage('http://google.com', 'google.png', options)
+.then(function() {
     // do stuff with google.png
+})
+.catch(function(err) {
+    console.error(err);
 });
 ```
 
+## Command line interface (CLI)
+
+The package also ships with a cli called `urltoimage`.
+
+```
+Usage: urltoimage <url> <path> [options]
+
+<url>   Url to take screenshot of
+<path>  File path where the screenshot is saved
+
+
+Options:
+  --width         Width of the viewport                 [string] [default: 1280]
+  --height        Height of the viewport                 [string] [default: 800]
+  --ajax-timeout  How long in ms do we wait for additional requests after all
+                  initial requests have gotten their response
+                                                         [string] [default: 300]
+  --max-timeout   How long in ms do we wait at maximum. The screenshot is taken
+                  after this time even though resources are not loaded
+                                                       [string] [default: 10000]
+  --kill-timeout  How long in ms do we wait for phantomjs process to finish. If
+                  the process is running after this time, it is killed.
+                                                      [string] [default: 120000]
+  --verbose       If set, script will output additional information to stdout.
+                                                      [boolean] [default: false]
+  -h, --help      Show help                                            [boolean]
+  -v, --version   Show version number                                  [boolean]
+
+Examples:
+  urltoimage http://google.com google.png
+```
 
 ## Test
 
     grunt test
 
 You need to have *mocha* installed globally with `npm install -g mocha`.
+
+# Contributors
 
 ## Release
 
