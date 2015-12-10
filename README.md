@@ -164,6 +164,26 @@ Usage: urltoimage <url> <path> [options]
 Options:
   --width              Width of the viewport            [string] [default: 1280]
   --height             Height of the viewport            [string] [default: 800]
+  --file-type          The file type of the rendered image. By default, 
+		               PhantomJS sets the output format automatically based on 
+					   the file extension. Supported: PNG, GIF, JPEG, PDF
+					                                   [string] [default: false]
+  --file-quality       The file quality of the rendered image, represented as a 
+                       percentage. This reduces the image size. 
+					   By default, 100 percent is used.
+					                                     [string] [default: 100]
+  --crop-width         Sets the width of the final image (cropped from the User 
+                       agent defined size).
+					                                   [string] [default: false]
+  --crop-height        Sets the height of the final image (cropped from the User 
+                       agent defined size).
+					                                   [string] [default: false]
+  --cropoffset-left    Sets the offset of where to begin the image cropping from 
+                       the left margin of the page.
+					                                   [string] [default: false]
+  --cropoffset-top     Sets the offset of where to begin the image cropping from 
+                       the top margin of the page.
+					                                   [string] [default: false]
   --request-timeout    How long in ms do we wait for additional requests after
                        all initial requests have gotten their response
                                                          [string] [default: 300]
