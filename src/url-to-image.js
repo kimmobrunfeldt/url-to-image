@@ -20,7 +20,13 @@ function main() {
         height: args[4],
         requestTimeout: args[5],
         maxTimeout: args[6],
-        verbose: args[7] === 'true'
+        verbose: args[7] === 'true',
+        fileType: args[8],
+        fileQuality: args[9] ? args[9] : 100,
+        cropWidth: args[10],
+        cropHeight: args[11],
+        cropOffsetLeft: args[12] ? args[12] : 0,
+        cropOffsetTop: args[13] ? args[13] : 0
     };
 
     renderPage(opts);
@@ -40,7 +46,7 @@ function renderPage(opts) {
     page.onConfirm = page.onPrompt = function noOp() {};
     page.onError = function(err) {
         log('Page error:', err);
-    }
+    };
 
     page.onResourceRequested = function(request) {
         log('->', request.method, request.url);
@@ -89,11 +95,25 @@ function renderPage(opts) {
 
     function renderAndExit() {
         log('Render screenshot..');
-        page.render(opts.filePath);
+        if(opts.cropWidth && opts.cropHeight) {
+        log("Cropping...");
+            page.clipRect = {top: opts.cropOffsetTop, left: opts.cropOffsetLeft, width: opts.cropWidth, height: opts.cropHeight};
+        }
+
+        var renderOpts = {
+            fileQuality: opts.fileQuality
+        };
+
+        if(opts.fileType) {
+            log("Adjusting File Type...");
+            renderOpts.fileType = opts.fileType;
+        }
+
+        page.render(opts.filePath, renderOpts);
         log('Done.');
         phantom.exit();
     }
-};
+}
 
 function isString(value) {
     return typeof value == 'string'

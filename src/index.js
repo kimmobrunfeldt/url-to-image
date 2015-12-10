@@ -27,7 +27,13 @@ function render(url, filePath, opts) {
         opts.height,
         opts.requestTimeout,
         opts.maxTimeout,
-        opts.verbose
+        opts.verbose,
+        opts.fileType,
+        opts.fileQuality,
+        opts.cropWidth,
+        opts.cropHeight,
+        opts.cropOffsetLeft,
+        opts.cropOffsetTop
     ]);
 
     var execOpts = {
