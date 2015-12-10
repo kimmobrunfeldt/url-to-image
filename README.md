@@ -75,6 +75,31 @@ This will run a PhantomJS script([url-to-image.js](./src/url-to-image.js)) which
 
         // User agent height
         height: 800,
+		
+		// The file type of the rendered image. By default, PhantomJS 
+		// sets the output format automatically based on the file extension.
+		// Supported: PNG, GIF, JPEG, PDF
+		fileType: 'jpeg',
+		
+		// The file quality of the rendered image, represented as a percentage. 
+		// This reduces the image size. By default, 100 percent is used.
+		fileQuality: 100,
+		
+		// Sets the width of the final image (cropped from the User agent defined size)
+		// By default, no cropping is done.
+		cropWidth: false,
+		
+		// Sets the height of the final image (cropped from the User agent defined size)
+		// By default, no cropping is done.
+		cropHeight: false,
+		
+		//Sets the offset of where to begin the image cropping from the left margin 
+		// of the page
+		cropOffsetLeft: 0,
+	
+    	//Sets the offset of where to begin the image cropping from the top margin 
+		// of the page
+		cropOffsetTop: 0,
 
         // How long in ms do we wait for additional requests
         // after all initial requests have gotten their response

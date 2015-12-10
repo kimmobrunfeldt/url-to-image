@@ -46,7 +46,7 @@ function renderPage(opts) {
     page.onConfirm = page.onPrompt = function noOp() {};
     page.onError = function(err) {
         log('Page error:', err);
-    }
+    };
 
     page.onResourceRequested = function(request) {
         log('->', request.method, request.url);
@@ -113,7 +113,7 @@ function renderPage(opts) {
         log('Done.');
         phantom.exit();
     }
-};
+}
 
 function isString(value) {
     return typeof value == 'string'

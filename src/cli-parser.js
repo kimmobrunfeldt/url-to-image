@@ -10,6 +10,12 @@ var defaultOpts = {
     maxTimeout: 1000 * 10,
     killTimeout: 1000 * 60 * 2,
     verbose: false,
+    fileType: false,
+    fileQuality: false,
+    cropWidth: false,
+    cropHeight: false,
+    cropOffsetLeft: 0,
+    cropOffsetTop: 0,
     phantomArguments: '--ignore-ssl-errors=true'
 };
 
@@ -50,9 +56,42 @@ function getUserOpts() {
         default: defaultOpts.maxTimeout,
         type: 'string'
     })
+    .option('file-type', {
+        describe: 'Defines the file type you want to create.',
+        default: defaultOpts.fileType,
+        type: 'string'
+    })
+    .option('file-quality', {
+        describe: 'Defines the quality of the file you want rendered' +
+        'as a percentage. Default is 100.',
+        default: defaultOpts.fileQuality,
+        type: 'string'
+    })
+    .option('crop-width', {
+        describe: 'The width of the final image which will be created',
+        default: defaultOpts.cropWidth,
+        type: 'string'
+    })
+    .option('crop-height', {
+        describe: 'The height of the final image which will be created',
+        default: defaultOpts.cropHeight,
+        type: 'string'
+    })
+    .option('cropoffset-left', {
+        describe: 'The position offset from the left of the screen from' +
+        ' where to start the image crop',
+        default: defaultOpts.cropOffsetLeft,
+        type: 'string'
+    })
+    .option('cropoffset-top', {
+        describe: 'The position offset from the top of the screen from' +
+        ' where to start the image crop',
+        default: defaultOpts.cropOffsetTop,
+        type: 'string'
+    })
     .option('kill-timeout', {
         describe: 'How long in ms do we wait for phantomjs process to finish.' +
-                  ' If the process is running after this time, it is killed.',
+        ' If the process is running after this time, it is killed.',
         default: defaultOpts.killTimeout,
         type: 'string'
     })
@@ -97,6 +136,26 @@ function validateAndTransformOpts(opts) {
 
     if (opts.killTimeout) {
         validateNumber(opts.killTimeout, 'Incorrect argument, kill timeout is not a number');
+    }
+
+    if (opts.fileQuality) {
+        validateNumber(opts.fileQuality, 'Incorrect argument, file quality is not a number');
+    }
+
+    if (opts.cropWidth) {
+        validateNumber(opts.cropWidth, 'Incorrect argument, crop width is not a number');
+    }
+
+    if (opts.cropHeight) {
+        validateNumber(opts.cropHeight, 'Incorrect argument, crop height is not a number');
+    }
+
+    if (opts.cropOffsetLeft) {
+        validateNumber(opts.killTimeout, 'Incorrect argument, crop offset left is not a number');
+    }
+
+    if (opts.cropOffsetTop) {
+        validateNumber(opts.killTimeout, 'Incorrect argument, crop offset top is not a number');
     }
 
     return opts;
