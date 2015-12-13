@@ -51,7 +51,7 @@ function getUserOpts() {
         type: 'string'
     })
     .option('max-timeout', {
-        describe: 'How long in ms do we wait at maximum. The screenshot is' +
+        describe: 'How long in ms do we wait at maximum after the first response is recieved. The screenshot is' +
                   ' taken after this time even though resources are not loaded',
         default: defaultOpts.maxTimeout,
         type: 'string'
@@ -129,6 +129,7 @@ function validateAndTransformOpts(opts) {
     if (opts.requestTimeout) {
         validateNumber(opts.requestTimeout, 'Incorrect argument, request timeout is not a number');
     }
+
 
     if (opts.maxTimeout) {
         validateNumber(opts.maxTimeout, 'Incorrect argument, max timeout is not a number');
