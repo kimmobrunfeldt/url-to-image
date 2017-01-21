@@ -15,7 +15,9 @@ function render(url, filePath, opts) {
         args = opts.phantomArguments.split(' ');
     }
 
-    if (!_.startsWith(url, 'http')) {
+    if (!_.startsWith(url, 'http') &&
+        !_.startsWith(url, 'https') &&
+        !_.startsWith(url, 'file') &&) {
         url = 'http://' + url;
     }
 
