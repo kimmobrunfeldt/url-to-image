@@ -17,7 +17,7 @@ function render(url, filePath, opts) {
 
     if (!_.startsWith(url, 'http') &&
         !_.startsWith(url, 'https') &&
-        !_.startsWith(url, 'file') &&) {
+        !_.startsWith(url, 'file')) {
         url = 'http://' + url;
     }
 
