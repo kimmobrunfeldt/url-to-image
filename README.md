@@ -116,7 +116,7 @@ This will run a PhantomJS script([url-to-image.js](./src/url-to-image.js)) which
         killTimeout: 1000 * 60 * 2,
 
         // If true, phantomjs script will output requests and responses to stdout
-        verbose: false
+        verbose: false,
 
         // String of of phantomjs arguments
         // You can separate arguments with spaces
