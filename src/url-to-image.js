@@ -1,3 +1,5 @@
+'use strict';
+
 // PhantomJS script
 // Takes screeshot of a given page. This correctly handles pages which
 // dynamically load content making AJAX requests.
@@ -6,14 +8,14 @@
 // time for the page to make additional requests.
 
 // Phantom internals
-var system = require('system');
-var webPage = require('webpage');
+const system = require('system');
+const webPage = require('webpage');
 
 function main() {
     // I tried to use yargs as a nicer commandline option parser but
     // it doesn't run in phantomjs environment
-    var args = system.args;
-    var opts = {
+    const args = system.args;
+    const opts = {
         url: args[1],
         filePath: args[2],
         width: args[3],
@@ -33,11 +35,11 @@ function main() {
 }
 
 function renderPage(opts) {
-    var requestCount = 0;
-    var forceRenderTimeout;
-    var dynamicRenderTimeout;
+    let requestCount = 0;
+    let forceRenderTimeout;
+    let dynamicRenderTimeout;
 
-    var page = webPage.create();
+    const page = webPage.create();
     page.viewportSize = {
         width: opts.width,
         height: opts.height
@@ -74,11 +76,11 @@ function renderPage(opts) {
     });
 
     function log() {
-        // PhangomJS doesn't stringify objects very well, doing that manually
+        // PhantomJS doesn't stringify objects very well, doing that manually
         if (opts.verbose) {
-            var args = Array.prototype.slice.call(arguments);
+            let args = Array.prototype.slice.call(arguments);
 
-            var str = '';
+            let str = '';
             args.forEach(function(arg) {
                 if (isString) {
                     str += arg;
@@ -100,7 +102,7 @@ function renderPage(opts) {
             page.clipRect = {top: opts.cropOffsetTop, left: opts.cropOffsetLeft, width: opts.cropWidth, height: opts.cropHeight};
         }
 
-        var renderOpts = {
+        let renderOpts = {
             fileQuality: opts.fileQuality
         };
 
@@ -116,7 +118,7 @@ function renderPage(opts) {
 }
 
 function isString(value) {
-    return typeof value == 'string'
+    return typeof value === 'string'
 }
 
 main();

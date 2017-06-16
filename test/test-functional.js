@@ -1,13 +1,15 @@
-var http = require('http');
-var fs = require('fs');
-var assert = require('assert');
-var sizeOf = require('image-size');
+'use strict';
 
-var urlToImage = require('../src/index');
+const http = require('http');
+const fs = require('fs');
+const assert = require('assert');
+const sizeOf = require('image-size');
+
+const urlToImage = require('../src/index');
 
 describe('urlToImage', function() {
 
-    var server = http.createServer(function(req, res) {
+    const server = http.createServer(function(req, res) {
         res.end('<html>test</html>');
     });
 
@@ -27,7 +29,7 @@ describe('urlToImage', function() {
         it('should render test image', function(done) {
             urlToImage('http://localhost:9000', 'localhost.png')
             .then(function() {
-                var dimensions = sizeOf('localhost.png');
+                const dimensions = sizeOf('localhost.png');
                 assert.equal(dimensions.width, 1280, 'default width is incorrect');
                 fs.unlinkSync('localhost.png');
                 done();
@@ -43,7 +45,7 @@ describe('urlToImage', function() {
                 }
             )
             .then(function() {
-                var dimensions = sizeOf('localhost.png');
+                const dimensions = sizeOf('localhost.png');
 
                 assert.equal(dimensions.width, 800, 'width is incorrect');
 

@@ -1,16 +1,17 @@
 #!/usr/bin/env node
+'use strict';
 
-var Promise = require('bluebird');
-var _ = require('lodash');
-var path = require('path');
-var childProcess = require('child_process');
-var phantomjs = require('phantomjs')
-var cliParser = require('./cli-parser');
+const Promise = require('bluebird');
+const _ = require('lodash');
+const path = require('path');
+const childProcess = require('child_process');
+const phantomjs = require('phantomjs')
+const cliParser = require('./cli-parser');
 
 function render(url, filePath, opts) {
     opts = _.extend(cliParser.defaultOpts, opts);
 
-    var args = [];
+    let args = [];
     if (_.isString(opts.phantomArguments)) {
         args = opts.phantomArguments.split(' ');
     }
@@ -36,15 +37,15 @@ function render(url, filePath, opts) {
         opts.cropOffsetTop
     ]);
 
-    var execOpts = {
+    let execOpts = {
         maxBuffer: Infinity
     };
 
-    var killTimer;
+    let killTimer;
     return new Promise(function(resolve, reject) {
-        var child;
+        let child;
         killTimer = setTimeout(function() {
-            killPhantom(opts, child)
+            killPhantom(opts, child);
             reject(new Error('Phantomjs process timeout'));
         }, opts.killTimeout);
 
@@ -65,7 +66,7 @@ function render(url, filePath, opts) {
         function closeHandler(exitCode) {
             child.removeListener('error', errorHandler);
             if (exitCode > 0) {
-                var err;
+                let err;
                 if (exitCode === 10) {
                     err = new Error('Unable to load given url: ' + url);
                 }
@@ -83,11 +84,11 @@ function render(url, filePath, opts) {
             clearTimeout(killTimer);
         }
     });
-};
+}
 
 function killPhantom(opts, child) {
     if (child) {
-        var msg = 'Phantomjs process didn\'t finish in ' +
+        const msg = 'Phantomjs process didn\'t finish in ' +
                   opts.killTimeout + 'ms, killing it..';
         console.error(msg);
 
@@ -96,7 +97,7 @@ function killPhantom(opts, child) {
 }
 
 if (require.main === module) {
-    var opts;
+    let opts;
     try {
         opts = cliParser.getOpts();
     } catch (err) {
