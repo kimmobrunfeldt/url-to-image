@@ -58,7 +58,7 @@ describe('urlToImage', function() {
         });
 
         it('should fail to incorrect url', function(done) {
-            this.timeout(3000);
+            this.timeout(5000);
 
             urlToImage(
                 'http://failure',
