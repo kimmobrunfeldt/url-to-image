@@ -10,7 +10,7 @@ Instead of waiting fixed amount of time before rendering, we give a short time f
 **Usage from code:**
 
 ```javascript
-var urlToImage = require('url-to-image');
+const urlToImage = require('url-to-image');
 urlToImage('http://google.com', 'google.png').then(function() {
     // now google.png exists and contains screenshot of google.com
 }).catch(function(err) {
@@ -53,7 +53,7 @@ PhantomJS is installed by using [Medium/phantomjs NPM module](https://github.com
 ## API
 
 ```javascript
-var urlToImage = require('url-to-image');
+const urlToImage = require('url-to-image');
 ```
 
 #### urlToImage(url, filePath, options)
@@ -132,9 +132,9 @@ This will run a PhantomJS script([url-to-image.js](./src/url-to-image.js)) which
 **Detailed example**
 
 ```javascript
-var urlToImage = require('url-to-image');
+const urlToImage = require('url-to-image');
 
-var options = {
+const options = {
     width: 600,
     height: 800,
     // Give a short time to load additional resources
