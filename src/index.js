@@ -3,6 +3,7 @@
 var Promise = require('bluebird');
 var _ = require('lodash');
 var path = require('path');
+var fs = require('fs');
 var childProcess = require('child_process');
 var phantomjs = require('phantomjs')
 var cliParser = require('./cli-parser');
@@ -16,7 +17,17 @@ function render(url, filePath, opts) {
     }
 
     if (!_.startsWith(url, 'http')) {
-        url = 'http://' + url;
+        try {
+            fs.statSync(url);
+        }
+        catch(err){
+            if (err.code == "ENOENT") {
+                url = 'http://' + url;
+            }
+            else if(err != null){
+                new Error('There is a problem accessing the file: ' + err.code);
+            }
+        };
     }
 
     args = args.concat([
