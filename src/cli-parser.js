@@ -1,9 +1,11 @@
-var _ = require('lodash');
-var yargs = require('yargs');
+'use strict';
 
-var VERSION = require('../package.json').version;
+const _ = require('lodash');
+const yargs = require('yargs');
 
-var defaultOpts = {
+const VERSION = require('../package.json').version;
+
+const defaultOpts = {
     width: 1280,
     height: 800,
     requestTimeout: 300,
@@ -20,13 +22,13 @@ var defaultOpts = {
 };
 
 function getOpts(argv) {
-    var userOpts = getUserOpts();
-    var opts = _.merge(defaultOpts, userOpts);
+    const userOpts = getUserOpts();
+    const opts = _.merge(defaultOpts, userOpts);
     return validateAndTransformOpts(opts);
 }
 
 function getUserOpts() {
-    var userOpts = yargs
+    const userOpts = yargs
     .usage(
         'Usage: $0 <url> <path> [options]\n\n' +
         '<url>   Url to take screenshot of\n' +
@@ -162,9 +164,9 @@ function validateAndTransformOpts(opts) {
 }
 
 function validateNumber(val, message) {
-    var number = Number(val);
+    const number = Number(val);
     if (!_.isNumber(number)) {
-        var err = message;
+        const err = message;
         err.argumentError = true;
         throw err;
     }
