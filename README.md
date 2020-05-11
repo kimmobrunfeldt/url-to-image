@@ -1,5 +1,8 @@
 # url-to-image
 
+**DEPRECATED:** I recommend using implementations that use Headless Chrome underneath, for example: https://github.com/alvarcarto/url-to-pdf-api. You can still continue using this module but no updates will be applied. 
+
+
 [![Build Status](https://travis-ci.org/kimmobrunfeldt/url-to-image.png?branch=master)](https://travis-ci.org/kimmobrunfeldt/url-to-image)
 [![Dependency Status](https://david-dm.org/kimmobrunfeldt/url-to-image.png?theme=shields.io)](https://david-dm.org/kimmobrunfeldt/url-to-image)
 [![devDependency Status](https://david-dm.org/kimmobrunfeldt/url-to-image/dev-status.png?theme=shields.io)](https://david-dm.org/kimmobrunfeldt/url-to-image#info=devDependencies)
