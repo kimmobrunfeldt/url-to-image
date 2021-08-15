@@ -1,6 +1,6 @@
 # url-to-image
 
-**DEPRECATED:** I recommend using implementations that use Headless Chrome underneath, for example: https://github.com/alvarcarto/url-to-pdf-api. You can still continue using this module but no updates will be applied. 
+**DEPRECATED:** I recommend using implementations that use Headless Chrome underneath, for example: https://github.com/kimmobrunfeldt/squint or https://github.com/alvarcarto/url-to-pdf-api. You can still continue using this module but no updates will be applied. 
 
 
 [![Build Status](https://travis-ci.org/kimmobrunfeldt/url-to-image.png?branch=master)](https://travis-ci.org/kimmobrunfeldt/url-to-image)
